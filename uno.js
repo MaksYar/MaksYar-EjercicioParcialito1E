@@ -26,5 +26,28 @@ Para poder sacar el permiso de circulación se deben llenar los siguientes datos
 
 function mostrar()
 {
-	alert("Hola Mundo");
+let temperatura;
+let nombreyapellido;
+let sintoma;
+
+nombreyapellido = document.getElementById("nombreyapellido").value;
+temperatura = parseInt(document.getElementById("temperatura").value);
+sintoma = document.getElementById("Sintoma").value;
+
+if(temperatura>=35 && temperatura<=40){
+
+if (temperatura>=38 || sintoma =="DificultadParaRespirar"){
+	alert("Permiso no otorgado para " + nombreyapellido);
+}
+else if(sintoma=="Tos"){
+	alert("Permiso otorgado. Por favor no se olvide de toser sobre su codo");
+}
+else{
+alert("Permiso otorgado para " + nombreyapellido);
+}
+}
+else{
+alert("La temperatura ingresada no es valida");
+document.getElementById("temperatura").value= "";
+}
 }
