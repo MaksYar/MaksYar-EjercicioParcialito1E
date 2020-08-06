@@ -10,41 +10,55 @@ Al finalizar, se debe informar:
 Considerar que las categorías pueden ser: almacen, lácteos, 
 limpieza o bebidas y que el precio no puede ser menor a 0 ni mayor a 1000.
 */
-let articulo
-let artPrecMax
-let categoria
-let precioArt
-let precioArtmax
-let pArticuloLact
-let bebidas
-let confirmacion
 
-function mostrar()
-{
+
+function mostrar(){
+let articulo;
+let artPrecMax;
+let categoria;
+let precioArtmax=0;
+let precioArt;
+let precioMaxLac="no ingresado";
+let pArticuloLact=0;
+let confirmacion;
+let nBebidas=0;
+
+
+	do {
 	articulo= prompt("Ingrese el nombre de un articulo");
+	
+	do{
 	categoria= prompt("Ingrese la categoria, entre almacen, lacteos, limpieza o bebidas");
+	}
+	while(!(categoria=="almacen" || categoria=="lacteos" || categoria=="limpieza" ||categoria=="bebidas"));
+
 	do {
 	precioArt=parseInt(prompt("Ingrese el precio"));
 	}
 	while(!(precioArt>=0 && precioArt<=1000));
-	if(articulo == "lacteos" && precioArt>pArticuloLact)
-	
 
-	if(precioArt>precioArtmax)
-	precioArtmax=precioArt;
-	artPrecMax=articulo;
-	
+	if (precioArt>precioArtmax){
+		precioArtmax=precioArt;
+		artPrecMax=articulo;
+		}
 
+	if(categoria == "lacteos" && precioArt>pArticuloLact){
+	pArticuloLact=precioArt;
+	precioMaxLac=articulo;
+	}
+	else if (categoria== "bebidas"){
+	nBebidas++;
+	}
 
-
-
-
-
-	do {
+	do{
 	confirmacion = prompt("Desea seguir ingresando? (si/no)");
-	while(!(confirmacion == no || confirmacion == si));
+	}
+	while(!(confirmacion == "no" || confirmacion == "si"));
+	}
+	while(confirmacion == "si");
 
-
-
+	alert("El articulo con el mayor precio es" + artPrecMax + " a $ " + precioArtmax);
+	alert("El articulo con el mayor precio de la categoria lacteos es " + precioMaxLac + " a $ " + pArticuloLact);
+	alert("La cantidad de articulos ingresados en la categoria bebidas es "+ nBebidas);
 
 }
